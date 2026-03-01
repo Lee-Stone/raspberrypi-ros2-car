@@ -2,7 +2,7 @@
 
 基于树莓派4B的ROS2自动定位与导航小车，能够实现激光雷达SLAM建图、自主定位、路径规划和自主导航等功能。
 
-**** 
+****
 
 **⭐ 欢迎提出Issues和PR，如果这个项目对你有帮助，请给个 Star！**
 
@@ -12,7 +12,9 @@
 - [🏗️ 系统架构](#️-系统架构)
 - [📁 项目结构](#-项目结构)
 - [🛠️ 硬件配置](#️-硬件配置)
-- [🚀 功能特性](#-功能特性)
+  - [1. 核心硬件](#1-核心硬件)
+  - [2. 机械参数](#2-机械参数)
+
 - [🔧 环境配置](#-环境配置)
   - [1. 树莓派环境](#1-树莓派环境)
   - [2. 虚拟机环境](#2-虚拟机环境)
@@ -31,7 +33,64 @@
 
 这是一个基于 **ROS2（机器人操作系统2）** 的自主导航智能小车项目，采用树莓派4B作为主控平台，结合STM32单片机进行底层硬件控制。小车能够实现激光雷达SLAM建图、自主定位、路径规划和自主导航等功能。   
 
-- 视频演示：
+**主要功能**：
+
+- **STM32 底盘运动控制**
+
+  - ✅ TB6612双路电机PWM速度控制
+
+  - ✅ 编码器速度反馈（左右轮独立测速）
+
+  - ✅ MPU6050 DMP姿态解算（提供角速度Z轴）
+
+  - ✅ OLED实时显示传感器数据
+
+  - ✅ 串口通信协议（与树莓派交互）
+
+
+- **树莓派 ROS2 中继通信**
+
+  - ✅ 差速驱动运动学模型
+
+  - ✅ 里程计（Odometry）发布
+
+  - ✅ TF坐标变换发布（odom → base_footprint → base_link → laser_link）
+
+  - ✅ 速度指令处理（/cmd_vel、/key_control）
+
+  - ✅ 多线程串口通信
+
+
+- **SLAM 建图**
+
+  - ✅ Cartographer 2D激光SLAM
+
+  - ✅ 实时地图构建
+
+  - ✅ 地图保存功能
+
+
+- **自主导航**
+
+  - ✅ Nav2导航栈
+
+  - ✅ AMCL自适应蒙特卡洛定位
+
+  - ✅ 全局路径规划
+
+  - ✅ 局部路径规划与避障
+
+  - ✅ RViz2可视化界面
+
+
+- **手动遥控**
+
+  - ✅ 键盘控制（WSAD按键）
+
+  - ✅ 实时状态反馈
+
+**视频演示**：
+
   - [基于ROS2的树莓派自主定位与导航小车_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1FKxTeVE5m?spm_id_from=333.788.recommend_more_video.0&trackid=web_related_0.router-related-2479604-dplt2.1771923917238.231&vd_source=b2115ccf4e995ec04004dc3600b1cecb)
   - [基于ROS2的树莓派自主定位与导航小车PLUS_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1gtuqzwESE/?spm_id_from=333.1387.upload.video_card.click&vd_source=b2115ccf4e995ec04004dc3600b1cecb) 
 
@@ -140,37 +199,7 @@ raspberrypi-ros2-car/
 
 ![小车外观2](images/2.png)
 
-## 🚀 功能特性
 
-### 1. STM32底盘运动控制
-- ✅ TB6612双路电机PWM速度控制
-- ✅ 编码器速度反馈（左右轮独立测速）
-- ✅ MPU6050 DMP姿态解算（提供角速度Z轴）
-- ✅ OLED实时显示传感器数据
-- ✅ 串口通信协议（与树莓派交互）
-
-### 2. 树莓派ROS2中继通信
-- ✅ 差速驱动运动学模型
-- ✅ 里程计（Odometry）发布
-- ✅ TF坐标变换发布（odom → base_footprint → base_link → laser_link）
-- ✅ 速度指令处理（/cmd_vel、/key_control）
-- ✅ 多线程串口通信
-
-### 3. SLAM建图
-- ✅ Cartographer 2D激光SLAM
-- ✅ 实时地图构建
-- ✅ 地图保存功能
-
-### 4. 自主导航
-- ✅ Nav2导航栈
-- ✅ AMCL自适应蒙特卡洛定位
-- ✅ 全局路径规划
-- ✅ 局部路径规划与避障
-- ✅ RViz2可视化界面
-
-### 5. 手动遥控
-- ✅ 键盘控制（WSAD按键）
-- ✅ 实时状态反馈
 
 ## 🔧 环境配置
 
@@ -333,14 +362,14 @@ raspberrypi-ros2-car/
 
     ```bash
     sudo apt-get update
-  
+    
     # 安装机器人模型依赖
     sudo apt install ros-jazzy-joint-state-publisher-gui 
     sudo apt install ros-jazzy-robot-state-publisher
-  
+    
     # 安装 Cartographer 依赖
     sudo apt-get install -y ros-jazzy-cartographer-*
-  
+    
     # 安装 Nav2 依赖
     sudo apt install -y ros-jazzy-navigation2
     sudo apt install -y ros-jazzy-nav2-bringup
