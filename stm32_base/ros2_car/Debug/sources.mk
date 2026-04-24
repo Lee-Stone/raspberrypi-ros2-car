@@ -1,5 +1,5 @@
 ################################################################################
-# Automatically-generated file. Do not edit!
+# 自动生成的文件。不要编辑！
 # Toolchain: GNU Tools for STM32 (13.3.rel1)
 ################################################################################
 
@@ -21,13 +21,16 @@ S_DEPS :=
 S_UPPER_DEPS := 
 C_DEPS := 
 
-# Every subdirectory with source files must be described here
+# 此处必须描述包含源文件的每个子目录
 SUBDIRS := \
 Core/Src \
 Core/Startup \
 Devices/Encoder \
+Devices/HCSR04 \
 Devices/MPU6050 \
 Devices/OLED \
+Devices/Serial \
 Devices/TB6612 \
+Devices/Tracker \
 Drivers/STM32F1xx_HAL_Driver/Src \
 

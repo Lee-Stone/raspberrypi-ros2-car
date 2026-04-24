@@ -80,33 +80,33 @@ PUTCHAR_PROTOTYPE
 
 float cmd_vel(char *str, char *data)
 {
-  char *loc,*token;
-  float a;
+	char *loc,*token;
+	float a;
 
-  loc = strstr(data, str);
-  token = strtok(loc, str);
-  a = atof(token);
+	loc = strstr(data, str);
+	token = strtok(loc, str);
+	a = atof(token);
 
-  return a;
+	return a;
 }
 
 float p_calc(float kp, float target, float current)
 {
-	 float err = target - current;
+	float err = target - current;
 
-	 return kp * err;
+	return kp * err;
 }
 
 float pi_calc(float kp, float ki, float *err_sum, float ki_max, float target, float current)
 {
-    float err = target - current;
+	float err = target - current;
 
-    *err_sum += err;
+	*err_sum += err;
 
-    if (*err_sum > ki_max) *err_sum = ki_max;
-    if (*err_sum < -ki_max) *err_sum = -ki_max;
+	if (*err_sum > ki_max) *err_sum = ki_max;
+	if (*err_sum < -ki_max) *err_sum = -ki_max;
 
-    return kp * err + ki * *err_sum;
+	return kp * err + ki * *err_sum;
 }
 
 float gyroz = 0.0;
