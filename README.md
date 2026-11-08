@@ -4,6 +4,8 @@
 
 > **🔗 PS**：基于香橙派 Zero 2W 的自动定位与导航小车已开源，成本更低，复刻更简单：[orangepi-ros2-car](https://github.com/Lee-Stone/orangepi-ros2-car)。
 
+****
+
 **⭐ 欢迎提出 Issues 和 PR，如果这个项目对你有帮助，请给个 Star！**
 
 ## 📑 目录
