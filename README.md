@@ -2,9 +2,7 @@
 
 基于树莓派 4B 的 ROS2 自动定位与导航小车，能够实现激光雷达 SLAM 建图、自主定位、路径规划和自主导航等功能。
 
-**🔗 PS**：基于香橙派 Zero 2W 的自动定位与导航小车已开源，成本更低，复刻更简单：[orangepi-ros2-car](https://github.com/Lee-Stone/orangepi-ros2-car)。
-
-****
+> **🔗 PS**：基于香橙派 Zero 2W 的自动定位与导航小车已开源，成本更低，复刻更简单：[orangepi-ros2-car](https://github.com/Lee-Stone/orangepi-ros2-car)。
 
 **⭐ 欢迎提出 Issues 和 PR，如果这个项目对你有帮助，请给个 Star！**
 
